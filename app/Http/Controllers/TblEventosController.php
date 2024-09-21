@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\http\Models\tbleventos;
+use App\Models\tbleventos;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
@@ -40,9 +40,9 @@ class TblEventosController extends Controller
 
 
     //para apagar os registros na tabela de eventos
-    public function destroy(tblEventos $id)
+    public function Destroy(tblEventos $id)
     {
-        $id->delete();
+        $id->delete();//apaga o registro escolhido
         return Redirect::route('home-adm');
     }
 
@@ -64,7 +64,7 @@ class TblEventosController extends Controller
 
     //Para mostrar somente os eventos por código 
     public function MostrarEventoCodigo(tblEventos $id){
-        return view('altera-evento',['registrosEventos'=>$id]);
+        return view('alteraevento',['registrosEventos'=>$id]);
     }
 
     // Para buscar os eventos por nome
