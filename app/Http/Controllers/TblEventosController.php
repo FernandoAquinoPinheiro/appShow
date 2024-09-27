@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\tbleventos;
+use App\Models\tblEventos;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Validate;
 
 class TblEventosController extends Controller
 {
@@ -26,15 +26,15 @@ class TblEventosController extends Controller
     //para salvar os registros na tabela evento
     public function CadastroEventos(Request $request)
     {
-        $registros = $request->validator([
+        $registros = $request->validate([
             'nomeEvento' => 'string|required',
-            'dataEvento' => 'date' | 'required',
-            'localEvento' => 'string' | 'required',
-            'imgEvento' => 'string' | 'required'
+            'dataEvento' => 'date|required',
+            'localEvento' => 'string|required',
+            'imgEvento' => 'string|required'
         ]);
 
 
-        tblEvento::create($registros);
+        TblEventoS::create($registros);
         return Redirect::route('home-adm');
     }
 

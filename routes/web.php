@@ -12,7 +12,7 @@ Route::get('/lista-evento',[TblEventosController::class,'MostrarEventoNome'])->n
 Route::get('/alterar-evento',[TblEventosController::class,'MostrarEventoCodigo'])->name('show-altera-evento');
 
 //para cadastrar
-Route::post('/cadastro-evento',[TblEventosController::class,'CadastrarEventos'])->name('cadastra-evento');
+Route::post('/cadastro-evento',[TblEventosController::class,'CadastroEventos'])->name('cadastra-evento');
 
 //para deeletar
 Route::delete('/apaga-evento',[TblEventosController::class,'Destroy'])->name('apaga-evento');
