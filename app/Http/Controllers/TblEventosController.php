@@ -50,11 +50,11 @@ class TblEventosController extends Controller
 
     public function Update(tblEventos $id, Request $request)
     {
-        $registros = $request->validator([
+        $registros = $request->validate([
             'nomeEvento' => 'string|required',
-            'dataEvento' => 'date' | 'required',
-            'localEvento' => 'string' | 'required',
-            'imgEvento' => 'string' | 'required'
+            'dataEvento' => 'date | required',
+            'localEvento' => 'string|required',
+            'imgEvento' => 'string|required'
         ]);
         $id->fill($registros);
         $id->save();
@@ -64,7 +64,7 @@ class TblEventosController extends Controller
 
     //Para mostrar somente os eventos por código 
     public function MostrarEventoCodigo(tblEventos $id){
-        return view('alteraevento',['registrosEventos'=>$id]);
+        return view('alteraevento',['registrosEvento'=>$id]);
     }
 
     // Para buscar os eventos por nome
@@ -74,7 +74,7 @@ class TblEventosController extends Controller
             $query->where('nomeEvento','like','%',$valor,'%');
         });
         $todosRegistros = $registros->get();
-        return view('listaEventos',['registrosEventos'=>$todosRegistros]);
+        return view('listaEventos',['registrosEvento'=>$todosRegistros]);
     }
 
 
